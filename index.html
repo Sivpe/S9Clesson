@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prepare B2 (Unit 20) | Places to Hang Out & A Place of Your Own</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+    .slide-active { display: flex !important; }
+    .tab-active { border-b-2 border-indigo-600 text-indigo-600 font-bold bg-indigo-50/50; }
+    
+    @media print {
+      .no-print { display: none !important; }
+      .print-only { display: block !important; }
+      body { background: white !important; color: black !important; font-size: 11pt; }
+      .worksheet-container { box-shadow: none !important; border: none !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
+      .page-break { page-break-before: always; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- TOP APP HEADER -->
+  <header class="no-print bg-slate-900 text-white sticky top-0 z-50 shadow-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-indigo-600 flex items-center justify-center font-black text-xl shadow-inner text-white">
+          20
+        </div>
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-widest text-amber-400">Prepare B2 • Level S9C</span>
+          <h1 class="text-lg font-bold leading-tight">Places to Hang Out & A Place of Your Own</h1>
+        </div>
+      </div>
+
+      <!-- NAVIGATION TABS -->
+      <nav class="hidden md:flex space-x-1 bg-slate-800/80 p-1.5 rounded-xl border border-slate-700/60 text-sm font-medium">
+        <button onclick="switchTab('presentation')" id="tab-btn-presentation" class="tab-link px-4 py-1.5 rounded-lg transition-all text-slate-300 hover:text-white flex items-center gap-2 bg-indigo-600 text-white font-bold shadow-sm">
+          <i data-lucide="presentation" class="w-4 h-4"></i> Lesson Slides
+        </button>
+        <button onclick="switchTab('vocab-worksheet')" id="tab-btn-vocab-worksheet" class="tab-link px-4 py-1.5 rounded-lg transition-all text-slate-300 hover:text-white flex items-center gap-2">
+          <i data-lucide="spell-check" class="w-4 h-4"></i> Vocab Worksheet (100 pts)
+        </button>
+        <button onclick="switchTab('reading-worksheet')" id="tab-btn-reading-worksheet" class="tab-link px-4 py-1.5 rounded-lg transition-all text-slate-300 hover:text-white flex items-center gap-2">
+          <i data-lucide="book-open" class="w-4 h-4"></i> Reading Worksheet (100 pts)
+        </button>
+        <button onclick="switchTab('teacher-guide')" id="tab-btn-teacher-guide" class="tab-link px-4 py-1.5 rounded-lg transition-all text-slate-300 hover:text-white flex items-center gap-2">
+          <i data-lucide="graduation-cap" class="w-4 h-4"></i> Teacher's Guide & Keys
+        </button>
+      </nav>
+
+      <!-- QUICK TOOLS / ACTIONS -->
+      <div class="flex items-center space-x-2">
+        <button onclick="window.print()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium rounded-lg border border-slate-700 flex items-center gap-1.5 transition">
+          <i data-lucide="printer" class="w-3.5 h-3.5"></i> Print / PDF
+        </button>
+        <button onclick="toggleTeacherNotes()" id="teacher-notes-toggle-btn" class="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs font-medium rounded-lg border border-amber-500/30 flex items-center gap-1.5 transition">
+          <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i> <span id="notes-btn-text">Teacher Notes (ON)</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION BAR -->
+  <div class="md:hidden no-print bg-slate-800 border-b border-slate-700 px-4 py-2 flex justify-between overflow-x-auto text-xs font-medium text-slate-300 space-x-2">
+    <button onclick="switchTab('presentation')" class="px-3 py-1.5 rounded bg-indigo-600 text-white font-bold whitespace-nowrap">Slides</button>
+    <button onclick="switchTab('vocab-worksheet')" class="px-3 py-1.5 rounded bg-slate-700 whitespace-nowrap">Vocab (100 pts)</button>
+    <button onclick="switchTab('reading-worksheet')" class="px-3 py-1.5 rounded bg-slate-700 whitespace-nowrap">Reading (100 pts)</button>
+    <button onclick="switchTab('teacher-guide')" class="px-3 py-1.5 rounded bg-slate-700 whitespace-nowrap">Teacher Guide</button>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: INTERACTIVE LESSON SLIDE PRESENTATION -->
+    <!-- ========================================== -->
+    <section id="view-presentation" class="tab-view block space-y-6">
+      <!-- Presentation Controller Header -->
+      <div class="no-print bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center space-x-3">
+          <span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 font-bold text-xs uppercase tracking-wider">
+            Slide <span id="slide-num">1</span> of <span id="total-slides">12</span>
+          </span>
+          <h2 id="current-slide-title" class="font-bold text-slate-800 text-base md:text-lg">Welcome & Lead-In</h2>
+        </div>
+
+        <div class="flex items-center space-x-3">
+          <!-- Slide Timer Widget -->
+          <div class="flex items-center space-x-2 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 text-xs text-slate-700">
+            <i data-lucide="timer" class="w-4 h-4 text-slate-500"></i>
+            <span id="timer-display" class="font-mono font-bold text-indigo-700 text-sm">02:00</span>
+            <button onclick="startSlideTimer(120)" class="hover:text-indigo-600 text-slate-500 font-semibold text-[10px] uppercase">Reset 2m</button>
+            <button onclick="toggleTimer()" id="timer-toggle-btn" class="hover:text-emerald-600 text-slate-500 font-semibold text-[10px] uppercase">Start</button>
+          </div>
+
+          <!-- Slide Nav Buttons -->
+          <div class="flex items-center space-x-1">
+            <button onclick="prevSlide()" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition" title="Previous Slide (Left Arrow)">
+              <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            <button onclick="nextSlide()" class="p-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-medium shadow-sm transition" title="Next Slide (Right Arrow or Space)">
+              <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+            <button onclick="toggleFullscreen()" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition" title="Toggle Fullscreen (F)">
+              <i data-lucide="maximize" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE VIEWER WRAPPER -->
+      <div id="slide-viewer" class="relative bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden min-h-[580px] flex flex-col justify-between p-6 md:p-10 transition-all">
+
+        <!-- ================= SLIDE 1 ================= -->
+        <div class="slide-content slide-active flex-col justify-between h-full space-y-6">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-600"></i> Unit 20 Warm-Up • Prepare B2
+            </div>
+            <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              Where is your <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-amber-500">sanctuary?</span>
+            </h1>
+            <p class="text-slate-600 text-base md:text-lg max-w-2xl">
+              Teenagers around the world are constantly searching for, reclaiming, and even hand-building their own places to hang out. Today we explore DIY architecture, urban sanctuaries, and personal autonomy!
+            </p>
+          </div>
+
+          <!-- Interactive Warm-up Prompts Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+            <div class="bg-indigo-50/70 border border-indigo-100 p-5 rounded-2xl hover:border-indigo-300 transition shadow-sm">
+              <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold mb-3 shadow">
+                1
+              </div>
+              <h3 class="font-bold text-slate-900 mb-1">Your Social Spots</h3>
+              <p class="text-sm text-slate-600">Where do you and your close friends usually hang out after school or on weekends?</p>
+            </div>
+            <div class="bg-amber-50/70 border border-amber-100 p-5 rounded-2xl hover:border-amber-300 transition shadow-sm">
+              <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold mb-3 shadow">
+                2
+              </div>
+              <h3 class="font-bold text-slate-900 mb-1">The Ideal Hideout</h3>
+              <p class="text-sm text-slate-600">If budget and permissions were unlimited, what would your dream hangout look like?</p>
+            </div>
+            <div class="bg-emerald-50/70 border border-emerald-100 p-5 rounded-2xl hover:border-emerald-300 transition shadow-sm">
+              <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold mb-3 shadow">
+                3
+              </div>
+              <h3 class="font-bold text-slate-900 mb-1">Community Reality</h3>
+              <p class="text-sm text-slate-600">Are there genuinely enough safe, welcome, and free places for teens in your city?</p>
+            </div>
+          </div>
+
+          <!-- Bottom Teacher Tip -->
+          <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 text-xs text-slate-600 flex items-center justify-between">
+            <span><strong>Pair Work (2 Mins):</strong> Turn to your shoulder partner and share your answer to Question 2.</span>
+            <span class="text-indigo-600 font-semibold">Press Space or Right Arrow for Next Slide &rarr;</span>
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 2: LESSON GOALS ================= -->
+        <div class="slide-content hidden flex-col justify-between h-full space-y-6">
+          <div class="space-y-3">
+            <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">CEFR B2 / S9C Goals</span>
+            <h2 class="text-3xl font-extrabold text-slate-900">Today's Mission & Learning Targets</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-auto">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold">A</div>
+                <h3 class="font-bold text-lg text-slate-900">Building & Spatial Vocabulary</h3>
+              </div>
+              <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                <li>Master 15 core architectural & hangout lexis items.</li>
+                <li>Confidently distinguish <span class="font-semibold text-slate-800">hut vs. shed vs. shelter</span>.</li>
+                <li>Accurately apply phrasal verbs: <em class="text-indigo-600">do up, pull down, chill out</em>.</li>
+              </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">B</div>
+                <h3 class="font-bold text-lg text-slate-900">Advanced Reading Strategies</h3>
+              </div>
+              <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                <li>Analyse two real teenage architectural builds: <em>The Treehouse vs. The Tiny House on Wheels</em>.</li>
+                <li>Master <strong>Inverted Question Formulation</strong>: deduct the reporter's questions from speaker answers.</li>
+                <li>Synthesise B2 comparative evaluations on legal liability and autonomy.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl text-xs text-amber-900 flex items-center gap-3">
+            <i data-lucide="award" class="w-5 h-5 text-amber-600 flex-shrink-0"></i>
+            <div>
+              <strong>Grading Checkpoint:</strong> Complete the 100-Point Vocabulary & 100-Point Reading Worksheets to achieve mastery!
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 3: PHOTO DISCOVERY (PAGE 112) ================= -->
+        <div class="slide-content hidden flex-col justify-between h-full space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">SB Page 112 • Exercise 1</span>
+            <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Three Teen Hangouts: Match & Analyse</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5 my-auto">
+            <!-- Card Photo A -->
+            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition">
+              <div class="h-40 bg-gradient-to-b from-amber-700 to-amber-950 flex flex-col items-center justify-center text-white p-4 text-center">
+                <i data-lucide="trees" class="w-10 h-10 mb-2 text-amber-300"></i>
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-200">Photo A</span>
+                <p class="text-sm font-semibold">High Wooden Treehouse & Ladder</p>
+              </div>
+              <div class="p-4 space-y-2">
+                <p class="text-xs text-slate-600">Built 28m up a tree at the edge of a field. Rustic wood, ladder, sofa, circular staircase.</p>
+                <div class="pt-2 border-t border-slate-100 flex justify-between items-center text-xs">
+                  <span class="font-bold text-indigo-600">Speaker 3's Spot</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded text-slate-600">Tree House</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Photo B -->
+            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition">
+              <div class="h-40 bg-gradient-to-b from-stone-600 to-stone-900 flex flex-col items-center justify-center text-white p-4 text-center">
+                <i data-lucide="home" class="w-10 h-10 mb-2 text-stone-300"></i>
+                <span class="text-xs font-bold uppercase tracking-wider text-stone-200">Photo B</span>
+                <p class="text-sm font-semibold">Restored Wooden Hut / Centre</p>
+              </div>
+              <div class="p-4 space-y-2">
+                <p class="text-xs text-slate-600">1960s wooden building renovated with a chimney for winter fires and music sessions.</p>
+                <div class="pt-2 border-t border-slate-100 flex justify-between items-center text-xs">
+                  <span class="font-bold text-indigo-600">Speaker 2's Spot</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded text-slate-600">Wooden Hut</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Photo C -->
+            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition">
+              <div class="h-40 bg-gradient-to-b from-slate-700 to-slate-950 flex flex-col items-center justify-center text-white p-4 text-center">
+                <i data-lucide="activity" class="w-10 h-10 mb-2 text-indigo-300"></i>
+                <span class="text-xs font-bold uppercase tracking-wider text-indigo-200">Photo C</span>
+                <p class="text-sm font-semibold">Urban Underground Skatepark</p>
+              </div>
+              <div class="p-4 space-y-2">
+                <p class="text-xs text-slate-600">Southbank Arts Complex basement with smooth concrete surfaces and grind rails.</p>
+                <div class="pt-2 border-t border-slate-100 flex justify-between items-center text-xs">
+                  <span class="font-bold text-indigo-600">Speaker 1's Spot</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded text-slate-600">Arts Complex</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-indigo-50 border border-indigo-200 p-3 rounded-xl text-xs text-indigo-900 flex justify-between items-center">
+            <span><strong>Discussion Question:</strong> Which of these three environments would you feel safest and most inspired in?</span>
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 4: TARGET VOCABULARY MASTER LIST ================= -->
+        <div class="slide-content hidden flex-col justify-between h-full space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Lexical Toolkit</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">15 Core Architectural & Spatial Terms</h2>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 text-xs my-auto">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-indigo-400 transition">
+              <span class="font-black text-indigo-600 text-sm block mb-1">complex</span>
+              <p class="text-slate-600">A group of buildings or facilities designed for a specific collective purpose.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-indigo-400 transition">
+              <span class="font-black text-indigo-600 text-sm block mb-1">basement</span>
+              <p class="text-slate-600">The floor or rooms located entirely or partly underground.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-indigo-400 transition">
+              <span class="font-black text-indigo-600 text-sm block mb-1">concrete</span>
+              <p class="text-slate-600">Hard, heavy building material made of stone, sand, cement, and water.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-indigo-400 transition">
+              <span class="font-black text-indigo-600 text-sm block mb-1">surface</span>
+              <p class="text-slate-600">The flat top or outer boundary of a structure/ground.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-indigo-400 transition">
+              <span class="font-black text-indigo-600 text-sm block mb-1">barriers</span>
+              <p class="text-slate-600">Structures or fences that block movement or protect an edge.</p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-400 transition">
+              <span class="font-black text-amber-600 text-sm block mb-1">hut</span>
+              <p class="text-slate-600">A small, simple single-room shelter or rustic cabin.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-400 transition">
+              <span class="font-black text-amber-600 text-sm block mb-1">community centre</span>
+              <p class="text-slate-600">A public building where local people meet for shared activities.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-400 transition">
+              <span class="font-black text-amber-600 text-sm block mb-1">chimney</span>
+              <p class="text-slate-600">A vertical pipe carrying smoke from a fireplace out through the roof.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-400 transition">
+              <span class="font-black text-amber-600 text-sm block mb-1">steps</span>
+              <p class="text-slate-600">Flat horizontal stone/wood surfaces for walking up or down.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-400 transition">
+              <span class="font-black text-emerald-600 text-sm block mb-1">frame</span>
+              <p class="text-slate-600">The rigid structural skeleton that supports a building or object.</p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-400 transition">
+              <span class="font-black text-emerald-600 text-sm block mb-1">shelter</span>
+              <p class="text-slate-600">A structure providing temporary cover from weather or danger.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-400 transition">
+              <span class="font-black text-emerald-600 text-sm block mb-1">shed</span>
+              <p class="text-slate-600">A small outbuilding in a garden primarily used for storage.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-400 transition">
+              <span class="font-black text-emerald-600 text-sm block mb-1">ladder</span>
+              <p class="text-slate-600">A portable or vertical climbing device with two rails and rungs.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-400 transition">
+              <span class="font-black text-emerald-600 text-sm block mb-1">bench</span>
+              <p class="text-slate-600">A long seat made of wood, stone, or metal for several people.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-400 transition">
+              <span class="font-black text-emerald-600 text-sm block mb-1">rug</span>
+              <p class="text-slate-600">A piece of thick woven fabric used as a floor covering.</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-100 p-3 rounded-xl text-xs text-slate-600 flex justify-between items-center">
+            <span><strong>Pronunciation Check:</strong> Notice stress patterns: <em>COM-plex</em>, <em>BASE-ment</em>, <em>COM-mu-ni-ty</em>.</span>
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 5: CLOZE PRACTICE (PAGE 112 EX 2) ================= -->
+        <div class="slide-content hidden flex-col justify-between h-full space-y-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">SB Page 112 • Exercise 2</span>
+              <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">Contextual Cloze Practice</h2>
+            </div>
+            <button onclick="revealAllSlideCloze()" class="px-3 py-1.5 bg-indigo-600 text-white rounded-lg text-xs font-bold hover:bg-indigo-700 shadow transition">
+              Reveal Answers
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <!-- Paragraph 1 -->
+            <div class="bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100 space-y-2">
+              <h4 class="font-bold text-indigo-900 flex items-center gap-1.5 text-sm">
+                <i data-lucide="map-pin" class="w-4 h-4 text-indigo-600"></i> The Southbank Centre
+              </h4>
+              <p class="text-slate-700 leading-relaxed">
+                "The Southbank Centre is a massive arts <span class="cloze-ans font-bold text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded" data-val="complex">1 [complex]</span> where people go to see concerts, shows and exhibitions. And in a <span class="cloze-ans font-bold text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded" data-val="basement">2 [basement]</span> area underneath, there's one of the best skateboarding parks in the country. It's all <span class="cloze-ans font-bold text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded" data-val="concrete">3 [concrete]</span> down there, which is a great <span class="cloze-ans font-bold text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded" data-val="surface">4 [surface]</span> for skateboarding, and there are metal <span class="cloze-ans font-bold text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded" data-val="barriers">5 [barriers]</span> and hand rails that you can slide along as well."
+              </p>
+            </div>
+
+            <!-- Paragraph 2 -->
+            <div class="bg-amber-50/50 p-4 rounded-2xl border border-amber-100 space-y-2">
+              <h4 class="font-bold text-amber-900 flex items-center gap-1.5 text-sm">
+                <i data-lucide="music" class="w-4 h-4 text-amber-600"></i> The Old Wooden Club
+              </h4>
+              <p class="text-slate-700 leading-relaxed">
+                "Before, this was just a dirty old wooden <span class="cloze-ans font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded" data-val="hut">6 [hut]</span>. I heard it used to be some sort of <span class="cloze-ans font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded" data-val="community centre">7 [community centre]</span> in the 1960s. Now it's been done up, we can play music here and there's even a <span class="cloze-ans font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded" data-val="chimney">8 [chimney]</span> so we can light a fire and keep warm in winter. On Friday nights and Saturdays, you can't even get up the <span class="cloze-ans font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded" data-val="steps">9 [steps]</span> to get into the place."
+              </p>
+            </div>
+
+            <!-- Paragraph 3 -->
+            <div class="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100 space-y-2">
+              <h4 class="font-bold text-emerald-900 flex items-center gap-1.5 text-sm">
+                <i data-lucide="tree-pine" class="w-4 h-4 text-emerald-600"></i> The Sky Treehouse
+              </h4>
+              <p class="text-slate-700 leading-relaxed">
+                "The tree house started with a wooden <span class="cloze-ans font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded" data-val="frame">10 [frame]</span>, just long bits of wood, and then we filled in the sides with floorboards. We made a roof too, to act as a kind of <span class="cloze-ans font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded" data-val="shelter">11 [shelter]</span> from the rain. It looks a bit like the sort of <span class="cloze-ans font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded" data-val="shed">12 [shed]</span> you might keep your tools in, but it's up a tree! There's a long <span class="cloze-ans font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded" data-val="ladder">13 [ladder]</span> for climbing up... an old wooden <span class="cloze-ans font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded" data-val="bench">14 [bench]</span> and a <span class="cloze-ans font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded" data-val="rug">15 [rug]</span> on the floor."
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-slate-100 p-3 rounded-xl text-xs text-slate-600">
+            <strong>Key Phrasal Verb Alert:</strong> <em>"done up"</em> = repaired, redecorated, or renovated.
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 6: NUANCE MASTERCLASS (HUT vs SHED vs SHELTER) ================= -->
+        <div class="slide-content hidden flex-col justify-between h-full space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">B2 Precision Discrimination</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">Hut vs. Shed vs. Shelter vs. Complex</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5 my-auto">
+            <div class="bg-white border-2 border-amber-300 p-5 rounded-2xl shadow-sm space-y-3">
+              <div class="flex items-center gap-2 text-amber-600 font-black text-lg">
+                <i data-lucide="home" class="w-6 h-6"></i> HUT
+              </div>
+              <p class="text-xs font-semibold text-slate-700">A basic, small single-room dwelling made of wood, mud, or stone.</p>
+              <div class="bg-amber-50 p-3 rounded-xl text-xs text-slate-600">
+                <strong>Primary Purpose:</strong> Habitation or living/sheltering people (e.g., a mountain hut, a beach hut).
+              </div>
+            </div>
+
+            <div class="bg-white border-2 border-emerald-300 p-5 rounded-2xl shadow-sm space-y-3">
+              <div class="flex items-center gap-2 text-emerald-600 font-black text-lg">
+                <i data-lucide="archive" class="w-6 h-6"></i> SHED
+              </div>
+              <p class="text-xs font-semibold text-slate-700">A small enclosed wooden or metal outbuilding, usually situated in a garden.</p>
+              <div class="bg-emerald-50 p-3 rounded-xl text-xs text-slate-600">
+                <strong>Primary Purpose:</strong> Storing tools, garden equipment, lawnmowers, or bicycles.
+              </div>
+            </div>
+
+            <div class="bg-white border-2 border-blue-300 p-5 rounded-2xl shadow-sm space-y-3">
+              <div class="flex items-center gap-2 text-blue-600 font-black text-lg">
+                <i data-lucide="umbrella" class="w-6 h-6"></i> SHELTER
+              </div>
+              <p class="text-xs font-semibold text-slate-700">Any structural cover providing temporary protection against rain, wind, or sun.</p>
+              <div class="bg-blue-50 p-3 rounded-xl text-xs text-slate-600">
+                <strong>Primary Purpose:</strong> Protection from weather/elements (e.g., a bus shelter, emergency rain shelter).
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 text-white p-4 rounded-2xl text-xs flex items-center justify-between">
+            <span class="text-amber-300 font-bold">Concept Check:</span>
+            <span class="text-slate-200">"If you want to keep your bicycle dry, you put it in a <strong class="text-white underline">shed</strong>. If rain starts while waiting for a bus, you stand in a <strong class="text-white underline">shelter</strong>."</span>
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 7: READING TEXT 1 (THE TREEHOUSE) ================= -->
+        <div class="slide-content hidden flex-col justify-between h-full space-y-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">SB Page 113 • Reading 1</span>
+              <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">The Sky-High Tree House (Dougie Haynes)</h2>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-red-100 text-red-700 font-bold text-xs">Demolition Controversy</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs my-auto">
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+              <span class="font-bold text-indigo-600 uppercase tracking-wider block">Key Metrics</span>
+              <ul class="space-y-1.5 text-slate-700">
+                <li>• <strong>Height:</strong> 28 metres up in a tree</li>
+                <li>• <strong>Labor:</strong> 5 teenage boys, 1,000 hours</li>
+                <li>• <strong>Tools:</strong> Recycled materials, nails & hammer</li>
+                <li>• <strong>Luxury:</strong> Windows, sofa, circular staircase</li>
+              </ul>
+            </div>
+
+            <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 space-y-2">
+              <span class="font-bold text-amber-700 uppercase tracking-wider block">National Acclaim</span>
+              <p class="text-slate-700 leading-relaxed">
+                Entered into a Facebook competition to find the nation's best tree house. Judges awarded them <strong>top prize</strong>, praising it as <em>'ludicrously high up'</em>!
+              </p>
+            </div>
+
+            <div class="bg-red-50 p-4 rounded-2xl border border-red-200 space-y-2">
+              <span class="font-bold text-red-700 uppercase tracking-wider block">The Legal Dilemma</span>
+              <p class="text-slate-700 leading-relaxed">
+                The farmer ordered it pulled down: he feared being <strong>taken to court</strong> if someone fell and got injured. Now the tree must be cut down too because branches grew around it.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-indigo-50 border border-indigo-100 p-3.5 rounded-xl text-xs text-indigo-900 flex justify-between items-center">
+            <span><strong>Dougie's Perspective:</strong> <em>"You'd have to be pretty crazy to ever fall or hurt yourself... I wouldn't say it's dangerous at all."</em></span>
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 8: READING TEXT 2 (CELINA DILL) ================= -->
+        <div class="slide-content hidden flex-col justify-between h-full space-y-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">SB Page 113 • Reading 2</span>
+              <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">Celina Dill's Tiny House on Wheels</h2>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs">Small House Movement</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs my-auto">
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+              <span class="font-bold text-indigo-600 uppercase tracking-wider block">Philosophy & Mobility</span>
+              <ul class="space-y-1.5 text-slate-700">
+                <li>• <strong>Age:</strong> 16 years old</li>
+                <li>• <strong>Concept:</strong> Tiny home built on a trailer</li>
+                <li>• <strong>Why wheels?</strong> <em>"I don't know where I want to live, so it needs to be able to go anywhere."</em></li>
+              </ul>
+            </div>
+
+            <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200 space-y-2">
+              <span class="font-bold text-emerald-700 uppercase tracking-wider block">Skills & Architecture</span>
+              <ul class="space-y-1.5 text-slate-700">
+                <li>• Learned welding from school metalwork class.</li>
+                <li>• Learned woodworking from her carpenter father.</li>
+                <li>• Solar design: orienting windows so sun warms the home and doesn't wake a sleeper early.</li>
+              </ul>
+            </div>
+
+            <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 space-y-2">
+              <span class="font-bold text-amber-700 uppercase tracking-wider block">Eco & Vintage Fixtures</span>
+              <ul class="space-y-1.5 text-slate-700">
+                <li>• Stylish 1950s vintage cooking stove.</li>
+                <li>• Eco-friendly composting toilet.</li>
+                <li>• Heavy-duty truck purchased with her savings to tow the trailer.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-emerald-50 border border-emerald-100 p-3.5 rounded-xl text-xs text-emerald-900 flex justify-between items-center">
+            <span><strong>Total Independence:</strong> Celina left high school early because she had mastered the practical skills needed for her life vision!</span>
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 9: INVERTED QUESTION MASTERCLASS (EX 3) ================= -->
+        <div class="slide-content hidden flex-col justify-between h-full space-y-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">SB Page 113 • Exercise 3</span>
+              <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">Inverted Reading: Find the Question!</h2>
+            </div>
+            <button onclick="revealSlideQuestions()" class="px-3 py-1.5 bg-indigo-600 text-white rounded-lg text-xs font-bold hover:bg-indigo-700 shadow transition">
+              Reveal Questions
+            </button>
+          </div>
+
+          <div class="space-y-3 text-xs overflow-y-auto max-h-[340px] pr-2">
+            <!-- Item 1 -->
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-indigo-700">1. Statement (Boy): "They chose us because they were impressed by its extreme height."</span>
+                <span class="text-[10px] bg-slate-200 px-2 py-0.5 rounded text-slate-700">Para 2</span>
+              </div>
+              <p class="text-slate-600 italic">Text quote: "Praising the tree house as 'ludicrously high up', the judges awarded them the top prize."</p>
+              <div class="q-reveal hidden bg-indigo-100 p-2 rounded text-indigo-900 font-semibold">
+                &rarr; Suggested Question: "Why do you think the competition judges awarded you top prize?"
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-indigo-700">2. Statement (Boy): "It's impossible to remove it because of how the tree has grown."</span>
+                <span class="text-[10px] bg-slate-200 px-2 py-0.5 rounded text-slate-700">Para 3</span>
+              </div>
+              <p class="text-slate-600 italic">Text quote: "...the construction is now so wrapped in branches that the whole tree will have to be cut down."</p>
+              <div class="q-reveal hidden bg-indigo-100 p-2 rounded text-indigo-900 font-semibold">
+                &rarr; Suggested Question: "Why can't you just take down the treehouse and save the tree?"
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-indigo-700">3. Statement (Celina): "I left because I didn't think there was anything more they could teach me."</span>
+                <span class="text-[10px] bg-slate-200 px-2 py-0.5 rounded text-slate-700">Para 3</span>
+              </div>
+              <p class="text-slate-600 italic">Text quote: "...she decided after three semesters... that she had learned what she needed and wanted to move on..."</p>
+              <div class="q-reveal hidden bg-indigo-100 p-2 rounded text-indigo-900 font-semibold">
+                &rarr; Suggested Question: "What made you decide to leave high school after only three semesters?"
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-indigo-700">4. Statement (Celina): "Nothing. I want the design to be all mine."</span>
+                <span class="text-[10px] bg-slate-200 px-2 py-0.5 rounded text-slate-700">Para 4</span>
+              </div>
+              <p class="text-slate-600 italic">Text quote: "Celina enjoys working on her project enormously and isn't even considering a pre-planned design."</p>
+              <div class="q-reveal hidden bg-indigo-100 p-2 rounded text-indigo-900 font-semibold">
+                &rarr; Suggested Question: "Are you following any pre-existing blueprints or commercial plans?"
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-100 p-2.5 rounded-xl text-xs text-slate-600">
+            <strong>B2 Strategy:</strong> Notice how pronouns and time markers (*they, it, after three semesters*) connect speaker quotes directly to text facts.
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 10: COMPARATIVE SYNTHESIS MATRIX ================= -->
+        <div class="slide-content hidden flex-col justify-between h-full space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">B2 Critical Synthesis</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">Comparing the Two DIY Projects</h2>
+          </div>
+
+          <div class="overflow-hidden border border-slate-200 rounded-2xl shadow-sm text-xs my-auto">
+            <table class="min-w-full divide-y divide-slate-200">
+              <thead class="bg-slate-800 text-white font-bold">
+                <tr>
+                  <th class="p-3 text-left">Evaluation Criteria</th>
+                  <th class="p-3 text-left bg-indigo-950">Dougie & The Boys (Treehouse)</th>
+                  <th class="p-3 text-left bg-emerald-950">Celina Dill (Tiny House on Wheels)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 bg-white text-slate-700">
+                <tr>
+                  <td class="p-3 font-bold bg-slate-50">Main Purpose</td>
+                  <td class="p-3">Social hangout spot to chill out with friends</td>
+                  <td class="p-3">Self-sufficient permanent future home</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold bg-slate-50">Location & Mobility</td>
+                  <td class="p-3">Fixed 28m up a tree on private farmland</td>
+                  <td class="p-3">Mobile trailer towed anywhere by truck</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold bg-slate-50">Team Structure</td>
+                  <td class="p-3">Collaborative group of 5 teenage boys</td>
+                  <td class="p-3">Solo builder with father's mentorship</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold bg-slate-50">Legal / Future Status</td>
+                  <td class="p-3 text-red-600 font-semibold">Demolished due to landowner liability fears</td>
+                  <td class="p-3 text-emerald-600 font-semibold">Fully viable, road-ready independent living</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-900 flex justify-between items-center">
+            <span><strong>Critical Question:</strong> Was the farmer fair to demand the treehouse be demolished? Why or why not?</span>
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 11: TALKING POINTS & SPEAKING DEBATE ================= -->
+        <div class="slide-content hidden flex-col justify-between h-full space-y-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">SB Page 113 • Talking Points</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">Class Debate & Speaking Challenge</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-auto">
+            <div class="bg-gradient-to-br from-indigo-50 to-blue-50 border border-indigo-200 p-5 rounded-2xl space-y-3 shadow-sm">
+              <h3 class="font-bold text-indigo-900 text-base flex items-center gap-2">
+                <i data-lucide="message-square" class="w-5 h-5 text-indigo-600"></i> Topic 1: Teen Hangouts Locally
+              </h3>
+              <p class="text-xs text-slate-700 leading-relaxed">
+                <em>"What kind of hangouts do young people need in your area? Do you have any cool hangouts locally, or are teens forced to loiter in shopping centres?"</em>
+              </p>
+              <div class="bg-white p-3 rounded-xl text-xs text-slate-600 border border-indigo-100">
+                <strong>Useful Phrasing:</strong> "In my view, our neighbourhood lacks dedicated youth spaces where we can..." / "What teenagers genuinely need is..."
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 p-5 rounded-2xl space-y-3 shadow-sm">
+              <h3 class="font-bold text-emerald-900 text-base flex items-center gap-2">
+                <i data-lucide="truck" class="w-5 h-5 text-emerald-600"></i> Topic 2: Hangouts on Wheels
+              </h3>
+              <p class="text-xs text-slate-700 leading-relaxed">
+                <em>"What would be the major advantages and disadvantages of having a hangout or home on wheels compared to a fixed permanent structure?"</em>
+              </p>
+              <div class="bg-white p-3 rounded-xl text-xs text-slate-600 border border-emerald-100">
+                <strong>Useful Phrasing:</strong> "On the one hand, a mobile place allows complete flexibility; on the other hand, parking permits and maintenance are..."
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-100 p-3 rounded-xl text-xs text-slate-700 flex items-center justify-between">
+            <span><strong>Pair Task (3 Mins):</strong> Choose one topic and prepare three bullet-point arguments!</span>
+          </div>
+        </div>
+
+        <!-- ================= SLIDE 12: WRAP UP & HOMEWORK ================= -->
+        <div class="slide-content hidden flex-col justify-between h-full space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Unit 20 Wrap-Up</span>
+            <h2 class="text-3xl font-extrabold text-slate-900">Consolidation & Assessment Task</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-auto">
+            <div class="bg-indigo-50 border-2 border-indigo-200 p-6 rounded-2xl space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold">1</div>
+                <h3 class="font-bold text-lg text-slate-900">Vocabulary Master Worksheet</h3>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Complete the 100-Point Vocabulary Worksheet covering all 15 building words, phrasal verbs, B2 sentence transformations, and error correction.
+              </p>
+              <button onclick="switchTab('vocab-worksheet')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow transition">
+                Go to Vocab Worksheet (100 Pts) &rarr;
+              </button>
+            </div>
+
+            <div class="bg-emerald-50 border-2 border-emerald-200 p-6 rounded-2xl space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold">2</div>
+                <h3 class="font-bold text-lg text-slate-900">Reading Analysis Worksheet</h3>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Complete the 100-Point Reading Worksheet with inverted question matching, B2 inference questions, and comparative analytical essay.
+              </p>
+              <button onclick="switchTab('reading-worksheet')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow transition">
+                Go to Reading Worksheet (100 Pts) &rarr;
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 text-white p-4 rounded-xl text-xs flex justify-between items-center">
+            <span>Great job today! You have mastered Unit 20 lexis and inverted comprehension strategies.</span>
+            <span class="text-amber-400 font-bold">Prepare B2 • Level S9C</span>
+          </div>
+        </div>
+
+        <!-- SLIDE CONTROLS FOOTER -->
+        <div class="no-print pt-6 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <div class="flex items-center space-x-2">
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Presentation Mode Active</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <span>Use <kbd class="px-1.5 py-0.5 bg-slate-100 border border-slate-300 rounded text-[10px]">←</kbd> <kbd class="px-1.5 py-0.5 bg-slate-100 border border-slate-300 rounded text-[10px]">→</kbd> to navigate</span>
+            <button onclick="restartSlides()" class="text-indigo-600 hover:underline font-semibold">Restart</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TEACHER SCRIPT / PEDAGOGICAL NOTES PANEL (TOGGLEABLE) -->
+      <div id="teacher-notes-panel" class="no-print bg-amber-50/80 border border-amber-200 p-5 rounded-2xl space-y-3 text-xs text-slate-700 transition-all">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2 text-amber-900 font-bold text-sm">
+            <i data-lucide="sparkles" class="w-4 h-4 text-amber-600"></i> Teacher's Live Script & Stage CCQs (Slide <span id="notes-slide-num">1</span>)
+          </div>
+          <span class="bg-amber-200 text-amber-900 font-mono font-bold px-2 py-0.5 rounded text-[10px]">B2 Pedagogical Guidance</span>
+        </div>
+        <div id="teacher-script-content" class="leading-relaxed text-slate-700 space-y-2">
+          <!-- Dynamic Teacher Notes Injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: 100-POINT VOCABULARY WORKSHEET -->
+    <!-- ========================================== -->
+    <section id="view-vocab-worksheet" class="tab-view hidden space-y-6">
+      <!-- Worksheet Header -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="px-3 py-0.5 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold uppercase tracking-wider">Assessment Sheet</span>
+            <span class="text-xs text-slate-400">• Unit 20 • Places to Hang Out</span>
+          </div>
+          <h2 class="text-2xl font-black text-slate-900">Vocabulary Master Worksheet (100 Points)</h2>
+          <p class="text-xs text-slate-500 mt-0.5">Comprehensive lexical evaluation: Cloze, Nuance Discrimination, Phrasal Verbs, Sentence Transformations, and Error Correction.</p>
+        </div>
+
+        <div class="flex items-center space-x-4 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+          <div class="text-right">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Your Score</span>
+            <span id="vocab-live-score" class="font-black text-2xl text-indigo-600">0</span> <span class="text-xs text-slate-500">/ 100</span>
+          </div>
+          <button onclick="checkVocabWorksheet()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-extrabold rounded-xl shadow-md transition">
+            Check & Grade
+          </button>
+        </div>
+      </div>
+
+      <!-- WORD BANK DISPLAY -->
+      <div class="bg-indigo-900 text-white p-4 rounded-2xl shadow-sm space-y-2">
+        <div class="flex items-center justify-between text-xs font-bold">
+          <span class="text-amber-300 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="key" class="w-4 h-4"></i> Official Master Word Bank:</span>
+          <span class="text-slate-300 font-normal">15 Target Words</span>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs font-mono">
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">barriers</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">basement</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">bench</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">chimney</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">community centre</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">complex</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">concrete</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">frame</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">hut</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">ladder</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">rug</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">shed</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">shelter</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">steps</span>
+          <span class="bg-slate-800/90 border border-slate-700 px-2.5 py-1 rounded-lg">surface</span>
+        </div>
+      </div>
+
+      <!-- PART 1: CONTEXTUAL CLOZE (30 PTS) -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs font-bold">1</span>
+            PART 1: Contextual Fit & Structural Collocations
+          </h3>
+          <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full">15 items × 2 pts = 30 Points</span>
+        </div>
+        <p class="text-xs text-slate-500">Fill each blank with the exact target word from the word bank. Each word is used only once.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <!-- Q1 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">1. The new cultural <input type="text" id="v-p1-q1" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> in the city centre houses two concert halls and art galleries.</label>
+            <div id="v-p1-fb1" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q2 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">2. Skaters prefer smooth <input type="text" id="v-p1-q2" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> because it allows wheels to glide smoothly.</label>
+            <div id="v-p1-fb2" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q3 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">3. Because the club is situated underground in the <input type="text" id="v-p1-q3" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> of the warehouse, it stays cool.</label>
+            <div id="v-p1-fb3" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q4 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">4. Heavy metal <input type="text" id="v-p1-q4" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> were installed along the perimeter to protect spectators.</label>
+            <div id="v-p1-fb4" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q5 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">5. Black ice creates an extremely hazardous and slippery <input type="text" id="v-p1-q5" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> on the road.</label>
+            <div id="v-p1-fb5" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q6 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">6. The wooden <input type="text" id="v-p1-q6" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> at the bottom of the garden is packed full of lawnmowers and tools.</label>
+            <div id="v-p1-fb6" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q7 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">7. When the torrential rain started, we took cover under a stone <input type="text" id="v-p1-q7" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> in the park.</label>
+            <div id="v-p1-fb7" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q8 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">8. Thick smoke rose gracefully through the brick <input type="text" id="v-p1-q8" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> into the winter sky.</label>
+            <div id="v-p1-fb8" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q9 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">9. Local citizens meet at the <input type="text" id="v-p1-q9" class="w-36 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> for evening classes and clubs.</label>
+            <div id="v-p1-fb9" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q10 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">10. We had to climb a tall 12-metre <input type="text" id="v-p1-q10" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> to reach the treehouse deck.</label>
+            <div id="v-p1-fb10" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q11 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">11. To keep our feet warm on the bare floorboards, we placed a thick <input type="text" id="v-p1-q11" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> on the floor.</label>
+            <div id="v-p1-fb11" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q12 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">12. Three of us sat comfortably on the wooden park <input type="text" id="v-p1-q12" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> to eat our sandwiches.</label>
+            <div id="v-p1-fb12" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q13 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">13. The builders constructed a solid timber <input type="text" id="v-p1-q13" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> before nailing the wall panels.</label>
+            <div id="v-p1-fb13" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q14 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">14. She walked up the stone <input type="text" id="v-p1-q14" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> leading to the library's front entrance.</label>
+            <div id="v-p1-fb14" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <!-- Q15 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700">15. The hikers slept overnight in a rustic mountain <input type="text" id="v-p1-q15" class="w-32 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700 focus:outline-indigo-500" placeholder="..."> high in the Alps.</label>
+            <div id="v-p1-fb15" class="text-[11px] font-semibold hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 2: NUANCE DISCRIMINATION (20 PTS) -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-amber-500 text-white flex items-center justify-center text-xs font-bold">2</span>
+            PART 2: Nuance & Semantic Precision
+          </h3>
+          <span class="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full">5 items × 4 pts = 20 Points</span>
+        </div>
+        <p class="text-xs text-slate-500">Choose the exact correct word for each scenario. (2 pts selection + 2 pts explanation).</p>
+
+        <div class="space-y-4 text-xs">
+          <!-- Nuance 1 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <p class="font-bold text-slate-800">1. A simple roof with open sides at a bus stop designed only to keep people out of the pouring rain is a:</p>
+            <div class="flex flex-wrap gap-4 text-slate-700">
+              <label><input type="radio" name="v-p2-q1" value="shed" class="mr-1"> Shed</label>
+              <label><input type="radio" name="v-p2-q1" value="shelter" class="mr-1"> Shelter</label>
+              <label><input type="radio" name="v-p2-q1" value="hut" class="mr-1"> Hut</label>
+            </div>
+            <div id="v-p2-fb1" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Nuance 2 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <p class="font-bold text-slate-800">2. An enormous destination containing an arena, 3 cinemas, 8 restaurants, and shopping stores is a:</p>
+            <div class="flex flex-wrap gap-4 text-slate-700">
+              <label><input type="radio" name="v-p2-q2" value="complex" class="mr-1"> Complex</label>
+              <label><input type="radio" name="v-p2-q2" value="facility" class="mr-1"> Single Facility</label>
+              <label><input type="radio" name="v-p2-q2" value="shed" class="mr-1"> Shed</label>
+            </div>
+            <div id="v-p2-fb2" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Nuance 3 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <p class="font-bold text-slate-800">3. Steel poles mounted beside stairs for pedestrians to hold onto for balance are:</p>
+            <div class="flex flex-wrap gap-4 text-slate-700">
+              <label><input type="radio" name="v-p2-q3" value="barriers" class="mr-1"> Barriers</label>
+              <label><input type="radio" name="v-p2-q3" value="hand rails" class="mr-1"> Hand Rails</label>
+              <label><input type="radio" name="v-p2-q3" value="steps" class="mr-1"> Steps</label>
+            </div>
+            <div id="v-p2-fb3" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Nuance 4 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <p class="font-bold text-slate-800">4. A movable vertical climbing tool with rungs that requires both hands and feet is a:</p>
+            <div class="flex flex-wrap gap-4 text-slate-700">
+              <label><input type="radio" name="v-p2-q4" value="ladder" class="mr-1"> Ladder</label>
+              <label><input type="radio" name="v-p2-q4" value="steps" class="mr-1"> Steps</label>
+              <label><input type="radio" name="v-p2-q4" value="frame" class="mr-1"> Frame</label>
+            </div>
+            <div id="v-p2-fb4" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Nuance 5 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <p class="font-bold text-slate-800">5. A municipal building where youth, parents, and seniors hold yoga classes, meetings, and clubs is a:</p>
+            <div class="flex flex-wrap gap-4 text-slate-700">
+              <label><input type="radio" name="v-p2-q5" value="community centre" class="mr-1"> Community Centre</label>
+              <label><input type="radio" name="v-p2-q5" value="shed" class="mr-1"> Shed</label>
+              <label><input type="radio" name="v-p2-q5" value="basement" class="mr-1"> Basement</label>
+            </div>
+            <div id="v-p2-fb5" class="text-[11px] font-semibold hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 3: PHRASAL VERBS & EXPRESSIONS (15 PTS) -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">3</span>
+            PART 3: Phrasal Verbs & Architectural Idioms
+          </h3>
+          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">5 items × 3 pts = 15 Points</span>
+        </div>
+
+        <div class="space-y-3 text-xs">
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <label class="block text-slate-700">1. We spent all summer trying to <input type="text" id="v-p3-q1" class="w-28 px-2 py-0.5 border rounded font-bold text-indigo-700" placeholder="..."> the run-down cabin with fresh paint and fairy lights.</label>
+            <div id="v-p3-fb1" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <label class="block text-slate-700">2. The local authority demanded the dangerous rickety treehouse be <input type="text" id="v-p3-q2" class="w-32 px-2 py-0.5 border rounded font-bold text-indigo-700" placeholder="..."> immediately.</label>
+            <div id="v-p3-fb2" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <label class="block text-slate-700">3. On Friday nights, my friends and I just want to sit on the sofa and <input type="text" id="v-p3-q3" class="w-28 px-2 py-0.5 border rounded font-bold text-indigo-700" placeholder="..."> while listening to lo-fi music.</label>
+            <div id="v-p3-fb3" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <label class="block text-slate-700">4. If an unauthorized trespasser gets injured on the farm, they might <input type="text" id="v-p3-q4" class="w-36 px-2 py-0.5 border rounded font-bold text-indigo-700" placeholder="..."> the landowner for compensation.</label>
+            <div id="v-p3-fb4" class="text-[11px] font-semibold hidden"></div>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <label class="block text-slate-700">5. The teens spent three weekends <input type="text" id="v-p3-q5" class="w-32 px-2 py-0.5 border rounded font-bold text-indigo-700" placeholder="..."> discarded timber and old nails.</label>
+            <div id="v-p3-fb5" class="text-[11px] font-semibold hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 4: B2 SENTENCE TRANSFORMATIONS (15 PTS) -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-600 text-white flex items-center justify-center text-xs font-bold">4</span>
+            PART 4: B2 Sentence Transformations
+          </h3>
+          <span class="text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full">5 items × 3 pts = 15 Points</span>
+        </div>
+        <p class="text-xs text-slate-500">Complete the second sentence using 2 to 5 words, including the word in bold.</p>
+
+        <div class="space-y-4 text-xs">
+          <!-- Trans 1 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <p class="text-slate-700">1. The council demolished the old skate ramp due to health worries. <strong>[DOWN]</strong></p>
+            <p class="text-slate-800 font-medium">The old skate ramp <input type="text" id="v-p4-q1" class="w-56 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700" placeholder="..."> health and safety fears.</p>
+            <div id="v-p4-fb1" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Trans 2 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <p class="text-slate-700">2. We redecorated our attic and made it extremely comfortable. <strong>[DONE]</strong></p>
+            <p class="text-slate-800 font-medium">Our attic has <input type="text" id="v-p4-q2" class="w-48 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700" placeholder="..."> really nicely inside.</p>
+            <div id="v-p4-fb2" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Trans 3 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <p class="text-slate-700">3. The judges were amazed by how absurdly high in the sky the treehouse was. <strong>[LUDICROUSLY]</strong></p>
+            <p class="text-slate-800 font-medium">The judges praised the treehouse as being <input type="text" id="v-p4-q3" class="w-48 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700" placeholder="..."> in the tree.</p>
+            <div id="v-p4-fb3" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Trans 4 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <p class="text-slate-700">4. Celina refused to use standard pre-made blueprints. <strong>[PRE-PLANNED]</strong></p>
+            <p class="text-slate-800 font-medium">Celina was not even <input type="text" id="v-p4-q4" class="w-48 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700" placeholder="..."> design.</p>
+            <div id="v-p4-fb4" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Trans 5 -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <p class="text-slate-700">5. The farmer is terrified that someone might sue him. <strong>[COURT]</strong></p>
+            <p class="text-slate-800 font-medium">The farmer fears <input type="text" id="v-p4-q5" class="w-56 px-2 py-1 border border-slate-300 rounded font-bold text-indigo-700" placeholder="..."> if an accident occurs.</p>
+            <div id="v-p4-fb5" class="text-[11px] font-semibold hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 5: ERROR SPOTTING & APPLIED PRODUCTION (20 PTS) -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-red-500 text-white flex items-center justify-center text-xs font-bold">5</span>
+            PART 5: Applied Production & Error Spotting Challenge
+          </h3>
+          <span class="text-xs font-bold text-red-700 bg-red-50 px-3 py-1 rounded-full">2 Tasks = 20 Points</span>
+        </div>
+
+        <!-- Task A -->
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2 text-xs">
+          <h4 class="font-bold text-slate-900">Task A: Applied Hangout Description (10 Points)</h4>
+          <p class="text-slate-600">Write a short description (40–60 words) of your dream hangout. Use at least <strong>4 target words</strong> (e.g. <em>complex, chimney, shelter, bench, rug, steps</em>).</p>
+          <textarea id="v-p5-text" rows="3" class="w-full p-2.5 border border-slate-300 rounded-xl text-slate-800 focus:outline-indigo-500 font-sans" placeholder="Example: My ideal hangout would be a rustic wooden shelter built on top of a hill. Inside, there is a stone chimney to stay warm and a vintage rug in front of a handmade bench..."></textarea>
+        </div>
+
+        <!-- Task B -->
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2 text-xs">
+          <h4 class="font-bold text-slate-900">Task B: Spot 5 B2 Errors (10 Points)</h4>
+          <p class="text-slate-700 italic bg-amber-50/70 p-3 rounded-xl border border-amber-200">
+            "Last weekend we visited a huge sports <u>surface (1)</u>. In the <u>roof (2)</u> underneath, there was a wooden <u>shed (3)</u> where people lived comfortably. To enter, we climbed 50 steep <u>ladders (4)</u> made of stone. Afterwards, we <u>pulled up (5)</u> the room with modern paint."
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 pt-2">
+            <div>
+              <span class="font-bold text-slate-600">Err 1: surface &rarr;</span>
+              <input type="text" id="v-err-1" class="w-full px-2 py-1 border rounded text-indigo-700 font-bold" placeholder="complex">
+            </div>
+            <div>
+              <span class="font-bold text-slate-600">Err 2: roof &rarr;</span>
+              <input type="text" id="v-err-2" class="w-full px-2 py-1 border rounded text-indigo-700 font-bold" placeholder="basement">
+            </div>
+            <div>
+              <span class="font-bold text-slate-600">Err 3: shed &rarr;</span>
+              <input type="text" id="v-err-3" class="w-full px-2 py-1 border rounded text-indigo-700 font-bold" placeholder="hut">
+            </div>
+            <div>
+              <span class="font-bold text-slate-600">Err 4: ladders &rarr;</span>
+              <input type="text" id="v-err-4" class="w-full px-2 py-1 border rounded text-indigo-700 font-bold" placeholder="steps">
+            </div>
+            <div>
+              <span class="font-bold text-slate-600">Err 5: pulled up &rarr;</span>
+              <input type="text" id="v-err-5" class="w-full px-2 py-1 border rounded text-indigo-700 font-bold" placeholder="did up">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: 100-POINT READING WORKSHEET -->
+    <!-- ========================================== -->
+    <section id="view-reading-worksheet" class="tab-view hidden space-y-6">
+      <!-- Reading Header -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">Assessment Sheet</span>
+            <span class="text-xs text-slate-400">• Unit 20 • A Place of Your Own</span>
+          </div>
+          <h2 class="text-2xl font-black text-slate-900">Reading Comprehension & Analysis Worksheet (100 Points)</h2>
+          <p class="text-xs text-slate-500 mt-0.5">Authentic text analysis, Inverted Question Formulation, Inference, Register & Comparative Synthesis.</p>
+        </div>
+
+        <div class="flex items-center space-x-4 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+          <div class="text-right">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Your Score</span>
+            <span id="reading-live-score" class="font-black text-2xl text-emerald-600">0</span> <span class="text-xs text-slate-500">/ 100</span>
+          </div>
+          <button onclick="checkReadingWorksheet()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold rounded-xl shadow-md transition">
+            Check & Grade
+          </button>
+        </div>
+      </div>
+
+      <!-- DUAL READING PASSAGES VIEWER -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs leading-relaxed">
+        <!-- Story 1 Box -->
+        <div class="bg-amber-50/40 p-5 rounded-2xl border border-amber-200 space-y-3">
+          <div class="flex items-center justify-between border-b border-amber-200/60 pb-2">
+            <h3 class="font-black text-amber-900 text-sm flex items-center gap-2">
+              <i data-lucide="trees" class="w-4 h-4 text-amber-600"></i> Story 1: The Sky-High Tree House
+            </h3>
+            <span class="text-[10px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">Dougie & Friends</span>
+          </div>
+          <p class="text-slate-700">
+            <strong>An award-winning tree house, which a group of boys spent three years building, will be pulled down over health and safety fears.</strong>
+          </p>
+          <p class="text-slate-700">
+            The group built their magical hangout, hiding 28 metres up a tree, at the edge of a farmer's field. The five main builders estimate that 1,000 hours of work went into building the tree house. The friends hunted for old construction materials and built up from an existing shelter that was 15 metres up the tree, using only nails and a hammer. It has a front door, windows, a circular staircase and a viewing platform. To complete the relaxed atmosphere, they even carried up a sofa to chill out on. The astonishing palace in the sky was entered into a competition on Facebook to find the nation's best tree house. Praising the tree house as 'ludicrously high up', the judges awarded them the top prize.
+          </p>
+          <p class="text-slate-700">
+            But the farmer who owns the field has said it must come down because he could be taken to court if someone fell off it and did themselves harm. Apparently, the construction is now so wrapped in branches that the whole tree will have to be cut down. On learning the tree house's fate, the group said they were very upset, but understood why it had to happen. Dougie Haynes was 16 when he started work on the project, and hopes to study architecture at university. He said, 'I put so much time into it. In October, we started building the top half, which was when the leaves were falling off the trees – that's when people started to notice it. It's sad – this summer could have been pretty awesome. You'd have to be pretty crazy to ever fall or hurt yourself. We are always very careful with new people. Standing on a nail was the worst injury I ever had there, and that was when I was building it. I wouldn't say it's dangerous at all.'
+          </p>
+        </div>
+
+        <!-- Story 2 Box -->
+        <div class="bg-emerald-50/40 p-5 rounded-2xl border border-emerald-200 space-y-3">
+          <div class="flex items-center justify-between border-b border-emerald-200/60 pb-2">
+            <h3 class="font-black text-emerald-900 text-sm flex items-center gap-2">
+              <i data-lucide="truck" class="w-4 h-4 text-emerald-600"></i> Story 2: Celina Dill's Tiny House on Wheels
+            </h3>
+            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Celina Dill</span>
+          </div>
+          <p class="text-slate-700">
+            <strong>It was the 'Small House Movement' that inspired Celina Dill's project of building a tiny home on wheels for herself. She's only 16 but is making serious plans for her future.</strong>
+          </p>
+          <p class="text-slate-700">
+            'I decided that I'll probably want to move out in a couple of years and I don't know where I want to live, so it needs to be able to go anywhere. So a house on wheels makes sense.'
+          </p>
+          <p class="text-slate-700">
+            Although Celina Dill was an excellent student, she decided after three semesters at South Whidbey High School that she had learned what she needed and wanted to move on with her life. She came away from her metalwork class with some useful practical skills. She added these skills to those her carpenter dad had shown her.
+          </p>
+          <p class="text-slate-700">
+            Celina enjoys working on her project enormously and isn't even considering a pre-planned design. Everything is going to be individual to her. Celina is capable of building every part of the house herself and is determined to do so. She has learned about how the sun moves through a house so that it warms its inhabitants and lights spaces, and how to build her home so the sun doesn't wake a sleeper too early in the morning.
+          </p>
+          <p class="text-slate-700">
+            She has found a stylish 1950s cooking stove, which will be great for cooking on, and an eco-friendly toilet. She's spent most of her savings on the heavy-duty truck that will pull her tiny house behind her on a wheeled trailer.
+          </p>
+        </div>
+      </div>
+
+      <!-- PART 1: GIST SCANNING (15 PTS) -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">1</span>
+            PART 1: Gist & Fast Scanning
+          </h3>
+          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">5 items × 3 pts = 15 Points</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700 font-semibold">1. What primary legal risk forced the farmer to demand demolition?</label>
+            <input type="text" id="r-p1-q1" class="w-full p-2 border rounded font-medium text-slate-800" placeholder="e.g. Fear of being taken to court / liability if someone falls">
+            <div id="r-p1-fb1" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700 font-semibold">2. How many total hours went into building the treehouse?</label>
+            <input type="text" id="r-p1-q2" class="w-full p-2 border rounded font-medium text-slate-800" placeholder="e.g. 1000 hours">
+            <div id="r-p1-fb2" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700 font-semibold">3. Why does Celina specifically require her home to be on wheels?</label>
+            <input type="text" id="r-p1-q3" class="w-full p-2 border rounded font-medium text-slate-800" placeholder="e.g. So it can go anywhere / she doesn't know where she'll live">
+            <div id="r-p1-fb3" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <label class="block text-slate-700 font-semibold">4. What two sources of education gave Celina her practical skills?</label>
+            <input type="text" id="r-p1-q4" class="w-full p-2 border rounded font-medium text-slate-800" placeholder="e.g. High school metalwork class + her carpenter dad">
+            <div id="r-p1-fb4" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1 md:col-span-2">
+            <label class="block text-slate-700 font-semibold">5. Why was the treehouse only noticed in October (autumn)?</label>
+            <input type="text" id="r-p1-q5" class="w-full p-2 border rounded font-medium text-slate-800" placeholder="e.g. Leaves were falling off the trees / built the top half">
+            <div id="r-p1-fb5" class="text-[11px] font-semibold hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 2: INVERTED QUESTION MATCHING (25 PTS) -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs font-bold">2</span>
+            PART 2: Inverted Question Formulation (Textbook Ex 3)
+          </h3>
+          <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full">5 items × 5 pts = 25 Points</span>
+        </div>
+        <p class="text-xs text-slate-500">Read what the speaker said. Select the best matching interviewer question that elicited their answer.</p>
+
+        <div class="space-y-4 text-xs">
+          <!-- Item 1 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <span class="font-bold text-slate-800 block">1. Speaker (Boy): <em>"They chose us because they were impressed by its extreme height."</em></span>
+            <div class="space-y-1 text-slate-700">
+              <label class="block"><input type="radio" name="r-p2-q1" value="A" class="mr-2"> A. Why do you think the judges awarded you the top prize in the Facebook competition?</label>
+              <label class="block"><input type="radio" name="r-p2-q1" value="B" class="mr-2"> B. How many hours did you spend building the platform?</label>
+              <label class="block"><input type="radio" name="r-p2-q1" value="C" class="mr-2"> C. Why did the farmer complain to the local court?</label>
+            </div>
+            <div id="r-p2-fb1" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <span class="font-bold text-slate-800 block">2. Speaker (Boy): <em>"It's impossible to remove it because of how the tree has grown."</em></span>
+            <div class="space-y-1 text-slate-700">
+              <label class="block"><input type="radio" name="r-p2-q2" value="A" class="mr-2"> A. Where did you find all the construction materials?</label>
+              <label class="block"><input type="radio" name="r-p2-q2" value="B" class="mr-2"> B. Why does the entire tree have to be cut down instead of just removing the treehouse?</label>
+              <label class="block"><input type="radio" name="r-p2-q2" value="C" class="mr-2"> C. When will the demolition take place?</label>
+            </div>
+            <div id="r-p2-fb2" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <span class="font-bold text-slate-800 block">3. Speaker (Boy): <em>"We're not happy about it, but we can see his point of view."</em></span>
+            <div class="space-y-1 text-slate-700">
+              <label class="block"><input type="radio" name="r-p2-q3" value="A" class="mr-2"> A. How did you and your friends react when you learned the farmer's decision?</label>
+              <label class="block"><input type="radio" name="r-p2-q3" value="B" class="mr-2"> B. How much did the competition prize money amount to?</label>
+              <label class="block"><input type="radio" name="r-p2-q3" value="C" class="mr-2"> C. Are you going to study architecture at university?</label>
+            </div>
+            <div id="r-p2-fb3" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <span class="font-bold text-slate-800 block">4. Speaker (Celina): <em>"I left because I didn't think there was anything more they could teach me."</em></span>
+            <div class="space-y-1 text-slate-700">
+              <label class="block"><input type="radio" name="r-p2-q4" value="A" class="mr-2"> A. What is the Small House Movement all about?</label>
+              <label class="block"><input type="radio" name="r-p2-q4" value="B" class="mr-2"> B. What made you decide to leave South Whidbey High School early?</label>
+              <label class="block"><input type="radio" name="r-p2-q4" value="C" class="mr-2"> C. How did you finance the heavy-duty truck?</label>
+            </div>
+            <div id="r-p2-fb4" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <span class="font-bold text-slate-800 block">5. Speaker (Celina): <em>"Nothing. I want the design to be all mine."</em></span>
+            <div class="space-y-1 text-slate-700">
+              <label class="block"><input type="radio" name="r-p2-q5" value="A" class="mr-2"> A. How much money did you save for the vintage stove?</label>
+              <label class="block"><input type="radio" name="r-p2-q5" value="B" class="mr-2"> B. Are you using or copying any pre-planned blueprints for your home?</label>
+              <label class="block"><input type="radio" name="r-p2-q5" value="C" class="mr-2"> C. Did your father build the trailer frame for you?</label>
+            </div>
+            <div id="r-p2-fb5" class="text-[11px] font-semibold hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 3: B2 MULTIPLE CHOICE (20 PTS) -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-amber-500 text-white flex items-center justify-center text-xs font-bold">3</span>
+            PART 3: Detailed Comprehension & B2 Inference
+          </h3>
+          <span class="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full">5 items × 4 pts = 20 Points</span>
+        </div>
+
+        <div class="space-y-4 text-xs">
+          <!-- Q1 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <span class="font-bold text-slate-800 block">1. Why is the farmer demanding that the treehouse be taken down?</span>
+            <div class="space-y-1 text-slate-700">
+              <label class="block"><input type="radio" name="r-p3-q1" value="A" class="mr-2"> A. He wants to sell the field to commercial developers.</label>
+              <label class="block"><input type="radio" name="r-p3-q1" value="B" class="mr-2"> B. He fears being legally sued if a visitor falls and hurts themselves on his land.</label>
+              <label class="block"><input type="radio" name="r-p3-q1" value="C" class="mr-2"> C. The boys damaged his agricultural machinery while hunting for materials.</label>
+            </div>
+            <div id="r-p3-fb1" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <span class="font-bold text-slate-800 block">2. What is Dougie Haynes' personal attitude toward safety in the treehouse?</span>
+            <div class="space-y-1 text-slate-700">
+              <label class="block"><input type="radio" name="r-p3-q2" value="A" class="mr-2"> A. He admits that falls happen constantly and that it is too dangerous.</label>
+              <label class="block"><input type="radio" name="r-p3-q2" value="B" class="mr-2"> B. He believes it is safe if people act sensibly and are cautious.</label>
+              <label class="block"><input type="radio" name="r-p3-q2" value="C" class="mr-2"> C. He blames the judges for publicly revealing its location.</label>
+            </div>
+            <div id="r-p3-fb2" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <span class="font-bold text-slate-800 block">3. Why did Celina leave high school early?</span>
+            <div class="space-y-1 text-slate-700">
+              <label class="block"><input type="radio" name="r-p3-q3" value="A" class="mr-2"> A. She had failing academic grades and was expelled.</label>
+              <label class="block"><input type="radio" name="r-p3-q3" value="B" class="mr-2"> B. She acquired the core practical skills she wanted and chose to start her life project.</label>
+              <label class="block"><input type="radio" name="r-p3-q3" value="C" class="mr-2"> C. Her family moved to a different state.</label>
+            </div>
+            <div id="r-p3-fb3" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <span class="font-bold text-slate-800 block">4. How does Celina's architectural design incorporate solar energy?</span>
+            <div class="space-y-1 text-slate-700">
+              <label class="block"><input type="radio" name="r-p3-q4" value="A" class="mr-2"> A. She tracks sun angles so natural light warms the house without waking sleepers early.</label>
+              <label class="block"><input type="radio" name="r-p3-q4" value="B" class="mr-2"> B. She installed giant rooftop solar panels to power a heavy electric vehicle.</label>
+              <label class="block"><input type="radio" name="r-p3-q4" value="C" class="mr-2"> C. She completely blocks all sunlight using blackout metal shutters.</label>
+            </div>
+            <div id="r-p3-fb4" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <span class="font-bold text-slate-800 block">5. What key quality do both Dougie and Celina demonstrate?</span>
+            <div class="space-y-1 text-slate-700">
+              <label class="block"><input type="radio" name="r-p3-q5" value="A" class="mr-2"> A. Carelessness about structural integrity.</label>
+              <label class="block"><input type="radio" name="r-p3-q5" value="B" class="mr-2"> B. Immense resourcefulness, hands-on craft skills, and creative ambition.</label>
+              <label class="block"><input type="radio" name="r-p3-q5" value="C" class="mr-2"> C. A desire to become full-time metalwork teachers.</label>
+            </div>
+            <div id="r-p3-fb5" class="text-[11px] font-semibold hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 4: VOCABULARY IN CONTEXT (15 PTS) -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-600 text-white flex items-center justify-center text-xs font-bold">4</span>
+            PART 4: Lexical Deduction & Idiomatic Register
+          </h3>
+          <span class="text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full">5 items × 3 pts = 15 Points</span>
+        </div>
+
+        <div class="space-y-3 text-xs">
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <span class="font-bold text-slate-800">1. "Praising the tree house as <u class="text-indigo-600">ludicrously</u> high up..."</span>
+            <div class="flex flex-wrap gap-4 pt-1 text-slate-700">
+              <label><input type="radio" name="r-p4-q1" value="A" class="mr-1"> Ridiculously / astonishingly</label>
+              <label><input type="radio" name="r-p4-q1" value="B" class="mr-1"> Dangerously low</label>
+              <label><input type="radio" name="r-p4-q1" value="C" class="mr-1"> Elegantly engineered</label>
+            </div>
+            <div id="r-p4-fb1" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <span class="font-bold text-slate-800">2. "...the whole tree will have to be <u class="text-indigo-600">pulled down</u>."</span>
+            <div class="flex flex-wrap gap-4 pt-1 text-slate-700">
+              <label><input type="radio" name="r-p4-q2" value="A" class="mr-1"> Demolished / felled</label>
+              <label><input type="radio" name="r-p4-q2" value="B" class="mr-1"> Cleaned and decorated</label>
+              <label><input type="radio" name="r-p4-q2" value="C" class="mr-1"> Transplanted</label>
+            </div>
+            <div id="r-p4-fb2" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <span class="font-bold text-slate-800">3. "...so that it warms its <u class="text-indigo-600">inhabitants</u>..."</span>
+            <div class="flex flex-wrap gap-4 pt-1 text-slate-700">
+              <label><input type="radio" name="r-p4-q3" value="A" class="mr-1"> The people living inside</label>
+              <label><input type="radio" name="r-p4-q3" value="B" class="mr-1"> The building materials</label>
+              <label><input type="radio" name="r-p4-q3" value="C" class="mr-1"> The furniture items</label>
+            </div>
+            <div id="r-p4-fb3" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <span class="font-bold text-slate-800">4. "...spent most of her savings on a <u class="text-indigo-600">heavy-duty</u> truck."</span>
+            <div class="flex flex-wrap gap-4 pt-1 text-slate-700">
+              <label><input type="radio" name="r-p4-q4" value="A" class="mr-1"> Exceptionally powerful and durable</label>
+              <label><input type="radio" name="r-p4-q4" value="B" class="mr-1"> Luxurious and fast</label>
+              <label><input type="radio" name="r-p4-q4" value="C" class="mr-1"> Inexpensive and compact</label>
+            </div>
+            <div id="r-p4-fb4" class="text-[11px] font-semibold hidden"></div>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+            <span class="font-bold text-slate-800">5. "...isn't even considering a <u class="text-indigo-600">pre-planned</u> design."</span>
+            <div class="flex flex-wrap gap-4 pt-1 text-slate-700">
+              <label><input type="radio" name="r-p4-q5" value="A" class="mr-1"> Standard pre-existing blueprint</label>
+              <label><input type="radio" name="r-p4-q5" value="B" class="mr-1"> Sustainable material</label>
+              <label><input type="radio" name="r-p4-q5" value="C" class="mr-1"> Expensive blueprint</label>
+            </div>
+            <div id="r-p4-fb5" class="text-[11px] font-semibold hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 5: COMPARATIVE SYNTHESIS & WRITING (25 PTS) -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-teal-600 text-white flex items-center justify-center text-xs font-bold">5</span>
+            PART 5: Comparative Evaluation & Guided Analytical Writing
+          </h3>
+          <span class="text-xs font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full">2 Tasks = 25 Points</span>
+        </div>
+
+        <!-- Task 1: Matrix -->
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3 text-xs">
+          <h4 class="font-bold text-slate-900">Task 1: Comparative Synthesis Matrix (10 Points)</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
+              <span class="font-bold text-amber-700">The Boys' Treehouse: Primary Goal & Fate</span>
+              <textarea id="r-matrix-tree" rows="2" class="w-full p-2 border rounded text-slate-800" placeholder="Goal: recreational hangout for friends; Fate: ordered demolished by farmer due to liability."></textarea>
+            </div>
+            <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
+              <span class="font-bold text-emerald-700">Celina's Tiny House: Primary Goal & Fate</span>
+              <textarea id="r-matrix-celina" rows="2" class="w-full p-2 border rounded text-slate-800" placeholder="Goal: mobile independent home for her future; Fate: fully operational on trailer towed by truck."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Task 2: Essay -->
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2 text-xs">
+          <h4 class="font-bold text-slate-900">Task 2: Critical Analytical Response (15 Points)</h4>
+          <p class="text-slate-600">
+            <em>Prompt: "Which of the two projects demonstrates greater long-term practical value for a young person's future? Support your evaluation using text facts and B2 comparative structures (e.g. whereas, although, in terms of sustainability)." (80–120 words)</em>
+          </p>
+          <textarea id="r-essay-text" rows="4" class="w-full p-3 border border-slate-300 rounded-xl text-slate-800 font-sans focus:outline-emerald-500" placeholder="Type your response here..."></textarea>
+          <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-slate-700">
+            <strong>B2 Assessment Criteria:</strong> Task Achievement (4 pts), Lexical Range (4 pts), Grammatical Accuracy (4 pts), Cohesion & Linking (3 pts).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: TEACHER'S MASTER GUIDE & ANSWER KEYS -->
+    <!-- ========================================== -->
+    <section id="view-teacher-guide" class="tab-view hidden space-y-6">
+      <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 font-bold text-xs uppercase tracking-wider">Master Pedagogical Dossier</span>
+          <h2 class="text-2xl font-black text-white mt-1">Teacher's Guide, Timings, CCQs & Answer Keys</h2>
+          <p class="text-xs text-slate-300">Prepare B2 • Level Secondary S9C • Unit 20</p>
+        </div>
+        <button onclick="window.print()" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold rounded-xl text-xs flex items-center gap-2 shadow">
+          <i data-lucide="printer" class="w-4 h-4"></i> Print Teacher Key
+        </button>
+      </div>
+
+      <!-- MASTER LESSON STAGING & TIMINGS -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-3 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-slate-900 text-sm">Stage 1: Lead-In & Hook</h4>
+            <span class="bg-indigo-100 text-indigo-800 font-bold px-2 py-0.5 rounded">10 mins</span>
+          </div>
+          <p class="text-slate-600">Activate schema about teenage spaces. Ask: <em>"Where do you go when you want zero adult supervision?"</em> Elicit skateparks, basements, treehouses.</p>
+          <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100">
+            <strong>Core CCQ:</strong> What makes a space feel truly 'yours'? Is it privacy, design, or company?
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-3 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-slate-900 text-sm">Stage 2: Lexical Precision</h4>
+            <span class="bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">20 mins</span>
+          </div>
+          <p class="text-slate-600">Teach 15 architectural words. Focus heavily on nuance: <em>shed</em> (storage) vs. <em>shelter</em> (protection) vs. <em>hut</em> (crude dwelling).</p>
+          <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100">
+            <strong>Key Phrasal Verbs:</strong> <em>do up</em> (renovate), <em>pull down</em> (demolish), <em>chill out</em> (relax).
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-3 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-slate-900 text-sm">Stage 3: Reading & Inversion</h4>
+            <span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">30 mins</span>
+          </div>
+          <p class="text-slate-600">Execute inverted question discovery (Ex 3). Train students to work backwards from answers to questions using grammar and textual references.</p>
+          <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-100">
+            <strong>Critical Extension:</strong> Liability vs. Teen Initiative debate.
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPLETE MASTER ANSWER KEY ACCORDION -->
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 space-y-6 text-xs">
+        <h3 class="text-lg font-black text-slate-900 border-b border-slate-200 pb-3 flex items-center gap-2">
+          <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i> Official 100% Complete Teacher Answer Keys
+        </h3>
+
+        <!-- Vocab Key Section -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-indigo-700 uppercase tracking-wider text-sm flex items-center gap-2">
+            <i data-lucide="spell-check" class="w-4 h-4"></i> 1. Vocabulary Worksheet Key (100 Points Total)
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100 text-slate-700">
+            <div>
+              <p class="font-bold text-slate-900 mb-1">Part 1 (30 pts / 2 pts each):</p>
+              <ol class="list-decimal list-inside space-y-0.5">
+                <li>1. complex</li>
+                <li>2. concrete</li>
+                <li>3. basement</li>
+                <li>4. barriers</li>
+                <li>5. surface</li>
+                <li>6. shed</li>
+                <li>7. shelter</li>
+                <li>8. chimney</li>
+                <li>9. community centre</li>
+                <li>10. ladder</li>
+                <li>11. rug</li>
+                <li>12. bench</li>
+                <li>13. frame</li>
+                <li>14. steps</li>
+                <li>15. hut</li>
+              </ol>
+            </div>
+            <div class="space-y-2">
+              <div>
+                <p class="font-bold text-slate-900 mb-0.5">Part 2: Nuance (20 pts):</p>
+                <p>1. <strong>Shelter</strong> (provides weather cover); 2. <strong>Complex</strong> (group of venues); 3. <strong>Hand rails</strong> (gripped for balance); 4. <strong>Ladder</strong> (vertical rungs); 5. <strong>Community centre</strong> (inclusive public space).</p>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900 mb-0.5">Part 3: Phrasal Verbs (15 pts):</p>
+                <p>1. do up; 2. pulled down; 3. chill out; 4. take [someone] to court; 5. hunting for.</p>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900 mb-0.5">Part 4: Transformations (15 pts):</p>
+                <p>1. was pulled down over / because of; 2. been done up; 3. built / situated ludicrously high up; 4. considering a pre-planned; 5. being taken to court.</p>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900 mb-0.5">Part 5: Error Correction (10 pts):</p>
+                <p>1. surface &rarr; <strong>complex</strong>; 2. roof &rarr; <strong>basement</strong>; 3. shed &rarr; <strong>hut</strong>; 4. ladders &rarr; <strong>steps</strong>; 5. pulled up &rarr; <strong>did up</strong>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reading Key Section -->
+        <div class="space-y-3 pt-4 border-t border-slate-100">
+          <h4 class="font-bold text-emerald-700 uppercase tracking-wider text-sm flex items-center gap-2">
+            <i data-lucide="book-open" class="w-4 h-4"></i> 2. Reading Comprehension Key (100 Points Total)
+          </h4>
+          <div class="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100 space-y-3 text-slate-700">
+            <div>
+              <p class="font-bold text-slate-900 mb-1">Part 1: Gist Scanning (15 pts / 3 pts each):</p>
+              <p>1. Demolition: Risk of being taken to court if someone fell and got injured. | 2. Total time: 1,000 hours. | 3. Wheels: To be able to move anywhere as she does not know where she will settle. | 4. Education: School metalwork class + carpentry taught by her father. | 5. October: Leaves fell off trees, revealing the top structure.</p>
+            </div>
+
+            <div>
+              <p class="font-bold text-slate-900 mb-1">Part 2: Inverted Questions (25 pts / 5 pts each):</p>
+              <ul class="space-y-1 list-disc list-inside">
+                <li><strong>Quote 1:</strong> <em>"Praising the tree house as 'ludicrously high up', the judges awarded them the top prize."</em> &rarr; <strong>Q:</strong> "Why did the judges award you top prize in the Facebook competition?"</li>
+                <li><strong>Quote 2:</strong> <em>"...the construction is now so wrapped in branches that the whole tree will have to be cut down."</em> &rarr; <strong>Q:</strong> "Why can't you just take down the treehouse without cutting down the tree?"</li>
+                <li><strong>Quote 3:</strong> <em>"On learning the tree house's fate, the group said they were very upset, but understood why it had to happen."</em> &rarr; <strong>Q:</strong> "How did your group feel and react when told it had to be pulled down?"</li>
+                <li><strong>Quote 4:</strong> <em>"...she decided after three semesters... that she had learned what she needed and wanted to move on..."</em> &rarr; <strong>Q:</strong> "What made you decide to leave high school early?"</li>
+                <li><strong>Quote 5:</strong> <em>"Celina enjoys working on her project enormously and isn't even considering a pre-planned design."</em> &rarr; <strong>Q:</strong> "Are you following any pre-planned blueprints for your home?"</li>
+              </ul>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              <div>
+                <p class="font-bold text-slate-900 mb-1">Part 3: Multiple Choice (20 pts):</p>
+                <p>1. <strong>B</strong> (Court liability); 2. <strong>B</strong> (Safe if sensible); 3. <strong>B</strong> (Learned practical skills); 4. <strong>A</strong> (Solar warming and light); 5. <strong>B</strong> (Immense drive and resourcefulness).</p>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900 mb-1">Part 4: Lexical Register (15 pts):</p>
+                <p>1. <strong>A</strong> (Ridiculously/astonishingly); 2. <strong>A</strong> (Demolished/felled); 3. <strong>A</strong> (People living inside); 4. <strong>A</strong> (Powerful & durable); 5. <strong>A</strong> (Pre-existing blueprint).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="no-print bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-xs text-center">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <p>Prepare B2 • Level S9C • Unit 20 Teaching Suite &copy; 2026</p>
+      <div class="flex items-center space-x-4">
+        <span>100-Point Vocab Worksheet</span>
+        <span>•</span>
+        <span>100-Point Reading Worksheet</span>
+        <span>•</span>
+        <span>Interactive Slides</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    // Lucide Icons Initialization
+    lucide.createIcons();
+
+    // STATE VARIABLES
+    let currentSlide = 1;
+    const totalSlides = 12;
+    let timerInterval = null;
+    let timeLeft = 120;
+    let timerRunning = false;
+
+    // Slide Titles and Teacher Scripts
+    const slideData = [
+      {
+        title: "Welcome & Lead-In",
+        script: "<strong>Teacher Script:</strong> 'Good morning class! Open your books to page 112. Today we're exploring where teenagers hang out and how some young people take matters into their own hands to build their dream spaces.'<br><strong>Prompt:</strong> Direct students to the 3 warm-up questions. Give them 2 minutes in pairs to discuss their ideal hangout."
+      },
+      {
+        title: "Lesson Goals & Mission",
+        script: "<strong>Teacher Script:</strong> 'Here are our objectives today. We will master 15 high-level spatial vocabulary items, analyse two remarkable building stories, and master inverted question deduction. Notice how B2 exams test your ability to infer implicit meanings!'"
+      },
+      {
+        title: "Photo Discovery (Page 112)",
+        script: "<strong>Teacher Script:</strong> 'Look at Photos A, B, and C. In Exercise 1, three teenagers describe these spots. Which photo shows a treehouse? (Photo A). Which shows an urban concrete skate spot? (Photo C). Which shows a renovated wooden hut? (Photo B). Let's listen/read!'"
+      },
+      {
+        title: "15 Core Architectural Terms",
+        script: "<strong>Teacher Script:</strong> 'Look at these 15 key words. Notice the difference in form: some are full buildings (hut, shed, complex), while others are architectural elements (chimney, surface, frame, steps). Pay attention to the pronunciation of <em>complex</em> (/ˈkɒmpleks/) and <em>basement</em> (/ˈbeɪsmənt/).'"
+      },
+      {
+        title: "Contextual Cloze Practice",
+        script: "<strong>Teacher Script:</strong> 'Let's complete Exercise 2. Let's do Paragraph 1 together. The Southbank Centre is a massive arts... what? (Complex!). And in the area underneath? (Basement!). Concrete is a great... (surface!). Click Reveal to verify answers.'"
+      },
+      {
+        title: "Nuance: Hut vs Shed vs Shelter",
+        script: "<strong>Teacher Script:</strong> 'Why can't we say *a garden shelter for lawnmowers*? Because a <strong>shed</strong> is specifically an enclosed storage outbuilding. A <strong>shelter</strong> is for temporary protection from the elements, and a <strong>hut</strong> is a simple living dwelling.'"
+      },
+      {
+        title: "Story 1: The Sky-High Tree House",
+        script: "<strong>Teacher Script:</strong> 'Look at page 113. Five 16-year-old boys built a treehouse 28 metres in the air! Why did the farmer demand it be pulled down? (Legal liability!). How would you feel if 1,000 hours of your work had to be destroyed?'"
+      },
+      {
+        title: "Story 2: Celina Dill's Tiny House",
+        script: "<strong>Teacher Script:</strong> 'Now meet Celina Dill. She is 16 and building a home on wheels. Why on wheels? (Mobility!). Notice her clever passive solar design: she oriented the house so morning sun warms the room without blinding a sleeper!'"
+      },
+      {
+        title: "Inverted Question Formulation (Ex 3)",
+        script: "<strong>Teacher Script:</strong> 'Exercise 3 is a fantastic B2 reading skill. You are given the speaker's statement, and you must deduce what the journalist asked. Look for clue words!'"
+      },
+      {
+        title: "Comparative Synthesis Matrix",
+        script: "<strong>Teacher Script:</strong> 'Let's compare Dougie's project with Celina's. Both are 16-year-old makers, but their legal status, mobility, and future outcomes are completely different.'"
+      },
+      {
+        title: "Debate & Speaking Challenge",
+        script: "<strong>Teacher Script:</strong> 'Time for our Speaking round. In pairs, choose Topic 1 (local teen hangouts) or Topic 2 (life on wheels). Use phrases like <em>In my view...</em>, <em>Whereas...</em>, and <em>On the flip side...</em>'"
+      },
+      {
+        title: "Wrap-Up & Assessment",
+        script: "<strong>Teacher Script:</strong> 'Outstanding work! Now complete the 100-Point Vocabulary and 100-Point Reading Worksheets to test your full mastery.'"
+      }
+    ];
+
+    // TAB SWITCHER
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-view').forEach(el => el.classList.add('hidden'));
+      document.getElementById('view-' + tabId).classList.remove('hidden');
+
+      // Update Tab Buttons
+      document.querySelectorAll('.tab-link').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'font-bold', 'shadow-sm');
+        btn.classList.add('text-slate-300');
+      });
+      const activeBtn = document.getElementById('tab-btn-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-indigo-600', 'text-white', 'font-bold', 'shadow-sm');
+        activeBtn.classList.remove('text-slate-300');
+      }
+      lucide.createIcons();
+    }
+
+    // SLIDE NAVIGATION
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+
+      const slides = document.querySelectorAll('#slide-viewer .slide-content');
+      slides.forEach((slide, idx) => {
+        if (idx === index - 1) {
+          slide.classList.remove('hidden');
+          slide.classList.add('slide-active');
+        } else {
+          slide.classList.add('hidden');
+          slide.classList.remove('slide-active');
+        }
+      });
+
+      document.getElementById('slide-num').innerText = currentSlide;
+      document.getElementById('notes-slide-num').innerText = currentSlide;
+      document.getElementById('current-slide-title').innerText = slideData[currentSlide - 1].title;
+      document.getElementById('teacher-script-content').innerHTML = slideData[currentSlide - 1].script;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) showSlide(currentSlide - 1);
+    }
+
+    function restartSlides() {
+      showSlide(1);
+    }
+
+    // Fullscreen Toggle
+    function toggleFullscreen() {
+      const viewer = document.getElementById('slide-viewer');
+      if (!document.fullscreenElement) {
+        viewer.requestFullscreen().catch(err => alert("Fullscreen not supported"));
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    // Keyboard Shortcuts
+    document.addEventListener('keydown', (e) => {
+      const activeView = document.querySelector('.tab-view:not(.hidden)');
+      if (activeView && activeView.id === 'view-presentation') {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          prevSlide();
+        } else if (e.key === 'f' || e.key === 'F') {
+          toggleFullscreen();
+        }
+      }
+    });
+
+    // Reveal Slide Cloze Answers
+    function revealAllSlideCloze() {
+      document.querySelectorAll('.cloze-ans').forEach(el => {
+        el.classList.toggle('bg-amber-300');
+        el.classList.toggle('text-slate-900');
+      });
+    }
+
+    // Reveal Slide Inverted Questions
+    function revealSlideQuestions() {
+      document.querySelectorAll('.q-reveal').forEach(el => {
+        el.classList.toggle('hidden');
+      });
+    }
+
+    // Teacher Notes Toggle
+    let notesVisible = true;
+    function toggleTeacherNotes() {
+      notesVisible = !notesVisible;
+      const panel = document.getElementById('teacher-notes-panel');
+      const btnText = document.getElementById('notes-btn-text');
+      if (notesVisible) {
+        panel.classList.remove('hidden');
+        btnText.innerText = "Teacher Notes (ON)";
+      } else {
+        panel.classList.add('hidden');
+        btnText.innerText = "Teacher Notes (OFF)";
+      }
+    }
+
+    // Slide Timer
+    function formatTime(secs) {
+      const m = Math.floor(secs / 60);
+      const s = secs % 60;
+      return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+
+    function startSlideTimer(seconds) {
+      clearInterval(timerInterval);
+      timeLeft = seconds;
+      timerRunning = true;
+      document.getElementById('timer-display').innerText = formatTime(timeLeft);
+      document.getElementById('timer-toggle-btn').innerText = "Pause";
+
+      timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          document.getElementById('timer-display').innerText = formatTime(timeLeft);
+        } else {
+          clearInterval(timerInterval);
+          timerRunning = false;
+          document.getElementById('timer-toggle-btn').innerText = "Start";
+          alert("Time's up! Bring pair discussions back to the main class.");
+        }
+      }, 1000);
+    }
+
+    function toggleTimer() {
+      if (timerRunning) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        document.getElementById('timer-toggle-btn').innerText = "Resume";
+      } else {
+        if (timeLeft <= 0) timeLeft = 120;
+        startSlideTimer(timeLeft);
+      }
+    }
+
+    // ==========================================
+    // VOCABULARY WORKSHEET GRADING LOGIC (100 PTS)
+    // ==========================================
+    function checkVocabWorksheet() {
+      let score = 0;
+
+      // Part 1: 15 items * 2 = 30 pts
+      const p1Answers = {
+        q1: ["complex"],
+        q2: ["concrete"],
+        q3: ["basement"],
+        q4: ["barriers"],
+        q5: ["surface"],
+        q6: ["shed"],
+        q7: ["shelter"],
+        q8: ["chimney"],
+        q9: ["community centre", "community center"],
+        q10: ["ladder"],
+        q11: ["rug"],
+        q12: ["bench"],
+        q13: ["frame"],
+        q14: ["steps"],
+        q15: ["hut"]
+      };
+
+      for (let i = 1; i <= 15; i++) {
+        const val = document.getElementById(`v-p1-q${i}`).value.trim().toLowerCase();
+        const fb = document.getElementById(`v-p1-fb${i}`);
+        fb.classList.remove('hidden');
+        if (p1Answers[`q${i}`].includes(val)) {
+          score += 2;
+          fb.innerHTML = `<span class="text-emerald-600">✓ Correct (+2 pts)</span>`;
+        } else {
+          fb.innerHTML = `<span class="text-rose-600">✗ Key: ${p1Answers[`q${i}`][0]}</span>`;
+        }
+      }
+
+      // Part 2: Nuance 5 items * 4 = 20 pts
+      const p2Keys = { q1: "shelter", q2: "complex", q3: "hand rails", q4: "ladder", q5: "community centre" };
+      for (let i = 1; i <= 5; i++) {
+        const selected = document.querySelector(`input[name="v-p2-q${i}"]:checked`);
+        const fb = document.getElementById(`v-p2-fb${i}`);
+        fb.classList.remove('hidden');
+        if (selected && selected.value === p2Keys[`q${i}`]) {
+          score += 4;
+          fb.innerHTML = `<span class="text-emerald-600">✓ Correct Choice & Distinction (+4 pts)</span>`;
+        } else {
+          fb.innerHTML = `<span class="text-rose-600">✗ Correct: ${p2Keys[`q${i}`]}</span>`;
+        }
+      }
+
+      // Part 3: Phrasal verbs 5 items * 3 = 15 pts
+      const p3Answers = {
+        q1: ["do up", "renovate"],
+        q2: ["pulled down", "demolished"],
+        q3: ["chill out", "relax"],
+        q4: ["take to court", "take him to court", "take"],
+        q5: ["hunting for", "looking for"]
+      };
+
+      for (let i = 1; i <= 5; i++) {
+        const val = document.getElementById(`v-p3-q${i}`).value.trim().toLowerCase();
+        const fb = document.getElementById(`v-p3-fb${i}`);
+        fb.classList.remove('hidden');
+        const match = p3Answers[`q${i}`].some(ans => val.includes(ans) || ans.includes(val));
+        if (val.length > 0 && match) {
+          score += 3;
+          fb.innerHTML = `<span class="text-emerald-600">✓ Correct (+3 pts)</span>`;
+        } else {
+          fb.innerHTML = `<span class="text-rose-600">✗ Key: ${p3Answers[`q${i}`][0]}</span>`;
+        }
+      }
+
+      // Part 4: Transformations 5 items * 3 = 15 pts
+      const p4Keys = [
+        "was pulled down over",
+        "been done up",
+        "ludicrously high up",
+        "considering a pre-planned",
+        "being taken to court"
+      ];
+
+      for (let i = 1; i <= 5; i++) {
+        const val = document.getElementById(`v-p4-q${i}`).value.trim().toLowerCase();
+        const fb = document.getElementById(`v-p4-fb${i}`);
+        fb.classList.remove('hidden');
+        if (val.includes(p4Keys[i - 1].split(' ')[0]) && val.length >= 4) {
+          score += 3;
+          fb.innerHTML = `<span class="text-emerald-600">✓ Correct B2 Transformation (+3 pts)</span>`;
+        } else {
+          fb.innerHTML = `<span class="text-rose-600">✗ Key: [${p4Keys[i - 1]}]</span>`;
+        }
+      }
+
+      // Part 5: Task A (Writing 10 pts) + Task B (Error spotting 10 pts)
+      const p5Text = document.getElementById('v-p5-text').value.trim();
+      if (p5Text.length > 30) score += 10;
+      else if (p5Text.length > 10) score += 5;
+
+      const err1 = document.getElementById('v-err-1').value.trim().toLowerCase();
+      const err2 = document.getElementById('v-err-2').value.trim().toLowerCase();
+      const err3 = document.getElementById('v-err-3').value.trim().toLowerCase();
+      const err4 = document.getElementById('v-err-4').value.trim().toLowerCase();
+      const err5 = document.getElementById('v-err-5').value.trim().toLowerCase();
+
+      if (err1.includes('complex')) score += 2;
+      if (err2.includes('basement')) score += 2;
+      if (err3.includes('hut') || err3.includes('cabin')) score += 2;
+      if (err4.includes('steps') || err4.includes('stairs')) score += 2;
+      if (err5.includes('did up') || err5.includes('do up')) score += 2;
+
+      document.getElementById('vocab-live-score').innerText = score;
+      alert(`Vocabulary Worksheet Graded: ${score}/100 Points!`);
+    }
+
+    // ==========================================
+    // READING WORKSHEET GRADING LOGIC (100 PTS)
+    // ==========================================
+    function checkReadingWorksheet() {
+      let score = 0;
+
+      // Part 1: Gist 5 items * 3 = 15 pts
+      for (let i = 1; i <= 5; i++) {
+        const val = document.getElementById(`r-p1-q${i}`).value.trim().toLowerCase();
+        const fb = document.getElementById(`r-p1-fb${i}`);
+        fb.classList.remove('hidden');
+        if (val.length >= 4) {
+          score += 3;
+          fb.innerHTML = `<span class="text-emerald-600">✓ Valid Text Point (+3 pts)</span>`;
+        } else {
+          fb.innerHTML = `<span class="text-rose-600">✗ Incomplete response</span>`;
+        }
+      }
+
+      // Part 2: Inverted Questions 5 items * 5 = 25 pts
+      const p2Answers = { q1: "A", q2: "B", q3: "A", q4: "B", q5: "B" };
+      for (let i = 1; i <= 5; i++) {
+        const sel = document.querySelector(`input[name="r-p2-q${i}"]:checked`);
+        const fb = document.getElementById(`r-p2-fb${i}`);
+        fb.classList.remove('hidden');
+        if (sel && sel.value === p2Answers[`q${i}`]) {
+          score += 5;
+          fb.innerHTML = `<span class="text-emerald-600">✓ Accurate Inverted Question (+5 pts)</span>`;
+        } else {
+          fb.innerHTML = `<span class="text-rose-600">✗ Option (${p2Answers[`q${i}`]}) is the matching question</span>`;
+        }
+      }
+
+      // Part 3: Multiple Choice 5 items * 4 = 20 pts
+      const p3Answers = { q1: "B", q2: "B", q3: "B", q4: "A", q5: "B" };
+      for (let i = 1; i <= 5; i++) {
+        const sel = document.querySelector(`input[name="r-p3-q${i}"]:checked`);
+        const fb = document.getElementById(`r-p3-fb${i}`);
+        fb.classList.remove('hidden');
+        if (sel && sel.value === p3Answers[`q${i}`]) {
+          score += 4;
+          fb.innerHTML = `<span class="text-emerald-600">✓ Correct B2 Analysis (+4 pts)</span>`;
+        } else {
+          fb.innerHTML = `<span class="text-rose-600">✗ Correct option is (${p3Answers[`q${i}`]})</span>`;
+        }
+      }
+
+      // Part 4: Vocab in Context 5 items * 3 = 15 pts
+      const p4Answers = { q1: "A", q2: "A", q3: "A", q4: "A", q5: "A" };
+      for (let i = 1; i <= 5; i++) {
+        const sel = document.querySelector(`input[name="r-p4-q${i}"]:checked`);
+        const fb = document.getElementById(`r-p4-fb${i}`);
+        fb.classList.remove('hidden');
+        if (sel && sel.value === p4Answers[`q${i}`]) {
+          score += 3;
+          fb.innerHTML = `<span class="text-emerald-600">✓ Precise Definition (+3 pts)</span>`;
+        } else {
+          fb.innerHTML = `<span class="text-rose-600">✗ Correct option: (A)</span>`;
+        }
+      }
+
+      // Part 5: Matrix (10 pts) + Essay (15 pts) = 25 pts
+      const treeMat = document.getElementById('r-matrix-tree').value.trim();
+      const celinaMat = document.getElementById('r-matrix-celina').value.trim();
+      const essay = document.getElementById('r-essay-text').value.trim();
+
+      if (treeMat.length > 10) score += 5;
+      if (celinaMat.length > 10) score += 5;
+      if (essay.length > 60) score += 15;
+      else if (essay.length > 20) score += 8;
+
+      document.getElementById('reading-live-score').innerText = score;
+      alert(`Reading Worksheet Graded: ${score}/100 Points!`);
+    }
+
+    // Initialize slide view on load
+    showSlide(1);
+  </script>
+</body>
+</html>
